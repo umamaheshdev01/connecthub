@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
 
 
     <link href="css/style.css" rel="stylesheet"></link>
-
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
       </head>
 
