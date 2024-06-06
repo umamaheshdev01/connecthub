@@ -1,44 +1,30 @@
 'use client'
 
-
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Foot from '../components/Foot';
-// import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 function Page() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+  
+  const form = useRef()
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
-    //   .then((result) => {
-    //     console.log(result.text);
-    //   }, (error) => {
-    //     console.log(error.text);
-    //   });
-
-    // Clear form fields after submission
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    emailjs
+      .sendForm('service_7i7k46s', 'template_325zmr6', form.current, {
+        publicKey: 'IEk2rKb8gHnHQ8nir',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+             form.current.reset();
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
   };
 
   return (
@@ -82,34 +68,35 @@ function Page() {
               <div className="col-lg-7">
                 <div className="wow fadeInUp" data-wow-delay="0.3s">
                   <p className="text-center mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                  <form onSubmit={handleSubmit}>
+
+                  <form ref={form} onSubmit={handleSubmit}>
                     <div className="row g-3">
                       <div className="col-md-6">
                         <div className="form-floating">
-                          <input type="text" className="form-control" id="name" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} />
-                          <label htmlFor="name">Your Name</label>
+                          <input type="text" className="form-control" id="name" name="user" placeholder="Your Name" />
+                          <label htmlFor="name" name='user'>Your Name</label>
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="form-floating">
-                          <input type="email" className="form-control" id="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} />
-                          <label htmlFor="email">Your Email</label>
+                          <input type="email" className="form-control" id="email" name="user_mail" placeholder="Your Email" />
+                          <label htmlFor="email" name='mail'>Your Email</label>
                         </div>
                       </div>
                       <div className="col-12">
                         <div className="form-floating">
-                          <input type="text" className="form-control" id="subject" name="subject" placeholder="Subject" value={formData.subject} onChange={handleChange} />
-                          <label htmlFor="subject">Subject</label>
+                          <input type="text" className="form-control" id="subject" name="sub" placeholder="Subject"  />
+                          <label htmlFor="subject" >Subject</label>
                         </div>
                       </div>
                       <div className="col-12">
                         <div className="form-floating">
-                          <textarea className="form-control" placeholder="Leave a message here" id="message" name="message" style={{ height: '150px' }} value={formData.message} onChange={handleChange}></textarea>
-                          <label htmlFor="message">Message</label>
+                          <textarea className="form-control" placeholder="Leave a message here" id="message" name="message" style={{ height: '150px' }}></textarea>
+                          <label htmlFor="message" >Message</label>
                         </div>
                       </div>
                       <div className="col-12">
-                        <button className="btn btn-primary w-100 py-3" type="button">Send Message</button>
+                        <button className="btn btn-primary w-100 py-3" type="submit">Send Message</button>
                       </div>
                     </div>
                   </form>
