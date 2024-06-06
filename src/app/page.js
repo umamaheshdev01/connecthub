@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import About from './components/About';
+import Link from 'next/link';
 
 
 function Page() {
@@ -29,7 +30,7 @@ function Page() {
                   <h1 className="text-white mb-4 animated slideInDown">Where projects meet its potential</h1>
                   <p className="text-white pb-3 animated slideInDown">Connet-Hub is a open platform for sale and purchase of various kind of project related to technical and non technical field. Here user get benefitted to list there work and sale all around the world.</p>
                   <a href="#" className="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Add Project</a>
-                  <a href="#" className="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Projects</a>
+                  <Link href="/projects" className="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Projects</Link>
                 </div>
                 <div className="col-lg-6 text-center text-lg-start">
                   <img className="img-fluid animated zoomIn" src="img/hero.png" alt="" />
