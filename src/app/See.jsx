@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import React from 'react'
 
-function See({pic,title,type}) {
+function See({pic,title,type,id}) {
   return (
   <div className={`col-lg-4 col-md-6 portfolio-item wow fadeInUp`} data-wow-delay="0.1s">
       <div className="rounded overflow-hidden">
@@ -10,9 +11,9 @@ function See({pic,title,type}) {
             <a className="btn btn-square btn-outline-light mx-1" href={pic} data-lightbox="portfolio">
               <i className="fa fa-eye"></i>
             </a>
-            <a className="btn btn-square btn-outline-light mx-1" href="">
+            <Link className="btn btn-square btn-outline-light mx-1" href={`/${id}`}>
               <i className="fa fa-link"></i>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="bg-light p-4">

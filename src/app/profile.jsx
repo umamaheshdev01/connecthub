@@ -31,7 +31,8 @@ function profile() {
             classs : item.Categories.class,
             title : item.name ,
             pic: item.image,
-            type : item.Categories.name
+            type : item.Categories.name,
+            id : item.id
         })
        })
    
@@ -85,11 +86,12 @@ function profile() {
                         <ul class="list-inline mb-5" id="portfolio-flters">
 
                       
-                            <li class="mx-2 active " data-filter="*" onClick={()=>setMe('all')}>All</li>
-                            <li class="mx-2 " onClick={()=>setMe('first')} data-filter=".first">Civil</li>
-                            <li class="mx-2" onClick={()=>setMe('second')} data-filter=".second">CSE</li>
-                            <li class="mx-2" onClick={()=>setMe('third')} data-filter=".third">Mechanical</li>
-                            <li class="mx-2" onClick={()=>setMe('fourth')}  data-filter=".fourth">ECE</li>
+                            <li className={`mx-2 ${me === 'all' ? 'active' : ''}`} onClick={() => setMe('all')}>All</li>
+<li className={`mx-2 ${me === 'first' ? 'active' : ''}`} onClick={() => setMe('first')}>Civil</li>
+<li className={`mx-2 ${me === 'second' ? 'active' : ''}`} onClick={() => setMe('second')}>CSE</li>
+<li className={`mx-2 ${me === 'third' ? 'active' : ''}`} onClick={() => setMe('third')}>Mechanical</li>
+<li className={`mx-2 ${me === 'fourth' ? 'active' : ''}`} onClick={() => setMe('fourth')}>ECE</li>
+
 
                         </ul>
                     </div>
@@ -103,12 +105,12 @@ function profile() {
                     
     {dataSet && dataSet.map((item)=>{
         if(me==='all'){
-       return <See  title={item.title} pic={item.pic} type={item.type}></See>}
+       return <See  title={item.title} pic={item.pic} id={item.id} type={item.type}></See>}
        else
        {
           if(me===item.classs)
             {
-                 return <See  title={item.title} pic={item.pic} type={item.type}></See>
+                 return <See  title={item.title} pic={item.pic} id={item.id} type={item.type}></See>
             }
        }
     })}

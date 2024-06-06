@@ -7,7 +7,7 @@ function Page() {
   return (
     <>
       <div className="container-xxl bg-white p-0">
-        <div
+        {/* <div
           id="spinner"
           className="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
         >
@@ -18,8 +18,11 @@ function Page() {
           >
             <span className="sr-only">Loading...</span>
           </div>
-        </div>
 
+
+        </div> */}
+
+<div className="container-xxl position-relative p-0">
         <Navbar />
 
         <div className="container-xxl py-5 bg-primary hero-header">
@@ -58,7 +61,9 @@ function Page() {
         <a href="#" className="btn btn-lg btn-secondary btn-lg-square back-to-top">
           <i className="bi bi-arrow-up"></i>
         </a>
+        </div>
       </div>
+
     </>
   );
 }
