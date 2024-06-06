@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 function Navbar() {
@@ -14,9 +15,9 @@ function Navbar() {
             </button>
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <div className="navbar-nav mx-auto py-0">
-                <a href="index.html" className="nav-item nav-link active">Home</a>
+                <Link href="/" className="nav-item nav-link active">Home</Link>
                 <a href="about.html" className="nav-item nav-link">About</a>
-                <a href="project.html" className="nav-item nav-link">Projects</a>
+                <Link  href="/projects" className="nav-item nav-link">Projects</Link>
                 <a href="contact.html" className="nav-item nav-link">Contact</a>
               </div>
               <a href="#" className="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Sign In</a>
