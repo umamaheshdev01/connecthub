@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Foot = () => {
@@ -19,9 +20,9 @@ const Foot = () => {
                     </div>
                     <div className="col-md-6 col-lg-3">
                         <p className="section-title text-white h5 mb-4">Quick Link<span></span></p>
-                        <a className="btn btn-link" href="">About Us</a>
-                        <a className="btn btn-link" href="">Contact Us</a>
-                        <a className="btn btn-link" href="">Projects</a>
+                        <a className="btn btn-link" href="/about">About Us</a>
+                        <a className="btn btn-link" href="/contact">Contact Us</a>
+                        <a className="btn btn-link" href="/projects">Projects</a>
                     </div>
                     <div className="col-md-6 col-lg-3">
                         <p className="section-title text-white h5 mb-4">Gallery<span></span></p>
@@ -67,9 +68,9 @@ const Foot = () => {
                         </div>
                         <div className="col-md-6 text-center text-md-end">
                             <div className="footer-menu">
-                                <a href="">Home</a>
-                                <a href="">Help</a>
-                                <a href="">FQAs</a>
+                                <Link href="/">Home</Link>
+                                <Link href="/contact">Contact</Link>
+                                <Link href="/projects">Projects</Link>
                             </div>
                         </div>
                     </div>

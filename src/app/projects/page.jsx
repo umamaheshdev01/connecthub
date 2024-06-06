@@ -34,17 +34,17 @@ function Page() {
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb justify-content-center">
                     <li className="breadcrumb-item">
-                      <a className="text-white" href="#">
+                      <a className="text-white" href="/">
                         Home
                       </a>
                     </li>
                     <li className="breadcrumb-item">
-                      <a className="text-white" href="#">
-                        Pages
+                      <a className="text-white" href="/contac">
+                        Contact
                       </a>
                     </li>
-                    <li className="breadcrumb-item text-white active" aria-current="page">
-                      Project
+                    <li className="breadcrumb-item text-white active" aria-current="page" href='/projects'>
+                      Projects
                     </li>
                   </ol>
                 </nav>

@@ -47,9 +47,9 @@ function Page() {
                   <hr className="bg-white mx-auto mt-0" style={{ width: '90px' }} />
                   <nav aria-label="breadcrumb">
                     <ol className="breadcrumb justify-content-center">
-                      <li className="breadcrumb-item"><a className="text-white" href="#">Home</a></li>
-                      <li className="breadcrumb-item"><a className="text-white" href="#">Pages</a></li>
-                      <li className="breadcrumb-item text-white active" aria-current="page">Contact</li>
+                      <li className="breadcrumb-item"><a className="text-white" href="/">Home</a></li>
+                      <li className="breadcrumb-item"><a className="text-white" href="/projects">Projects</a></li>
+                      
                     </ol>
                   </nav>
                 </div>
