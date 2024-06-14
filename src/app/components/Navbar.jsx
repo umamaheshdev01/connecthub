@@ -3,8 +3,21 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 // Import useRouter hook
 import React from 'react'
+import {
 
-function Navbar() {
+
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+
+} from '@clerk/nextjs'
+import {  currentUser, getAuth } from '@clerk/nextjs/server';
+
+
+function  Navbar() {
+  
   const router = useRouter(); 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -34,7 +47,17 @@ function Navbar() {
               
             ))}
           </div>
-          <a href="#" className="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Sign In</a>
+          {/* <a className="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Sign In</a> */}
+         
+         
+          
+          <SignedIn>
+          <UserButton className='p-2'></UserButton>
+          </SignedIn>
+
+          <SignedOut>
+          <SignInButton className='btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block'></SignInButton> 
+          </SignedOut>
         </div>
       </nav>
     </>
