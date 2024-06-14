@@ -29,7 +29,7 @@ function Page() {
                 <div className="col-lg-6 text-center text-lg-start">
                   <h1 className="text-white mb-4 animated slideInDown">Where projects meet its potential</h1>
                   <p className="text-white pb-3 animated slideInDown">Connet-Hub is a open platform for sale and purchase of various kind of project related to technical and non technical field. Here user get benefitted to list there work and sale all around the world.</p>
-                  <a href="#" className="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Add Project</a>
+                  <Link href="/add" className="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Add Project</Link>
                   <Link href="/projects" className="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Projects</Link>
                 </div>
                 <div className="col-lg-6 text-center text-lg-start">
