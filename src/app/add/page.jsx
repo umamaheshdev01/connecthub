@@ -5,12 +5,14 @@ import Navbar from '../components/Navbar';
 import Foot from '../components/Foot';
 import { createClient } from '@supabase/supabase-js';
 import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation'; // Import the useRouter hook
 
 const supabaseUrl = 'https://hapwlcudtodgzhemtoej.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhcHdsY3VkdG9kZ3poZW10b2VqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTczMTgxMDYsImV4cCI6MjAzMjg5NDEwNn0.CPD8u7fKRN6WKWK6FrJvqIztBTUK746k6LDZeAwrnQ8';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 function Page() {
+  const router = useRouter(); // Initialize useRouter hook
   const { user } = useUser();
   const [projectName, setProjectName] = useState('');
   const [price, setPrice] = useState('');
@@ -25,18 +27,19 @@ function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const usermail = user.emailAddresses[0].emailAddress;
+    const { data, error } = await supabase.from('Users').select('*').eq('email', usermail);
     
+    if (error) {
+      console.error('Error fetching user data:', error);
+      return;
+    }
 
-    const usermail = user.emailAddresses[0].emailAddress
-
-    const {data,error} = await supabase.from('Users').select('*').eq('email',usermail)
-    
-    const iduser = data[0].id
-
+    const iduser = data[0].id;
     let imageUrl = '';
 
     if (image) {
-      const { data, error } = await supabase
+      const { data: imageData, error: imageError } = await supabase
         .storage
         .from('fun')
         .upload(`uma/${image.name}`, image, {
@@ -44,20 +47,19 @@ function Page() {
           upsert: false
         });
 
-      if (error) {
-        console.error('Error uploading image:', error);
+      if (imageError) {
+        console.error('Error uploading image:', imageError);
         return;
       }
 
       imageUrl = `https://hapwlcudtodgzhemtoej.supabase.co/storage/v1/object/public/fun/uma/${image.name}`;
-    //   console.log('Image uploaded successfully:', data);
     }
 
     const { data: insertData, error: insertError } = await supabase
       .from('Projects')
       .insert([
         {
-          user : iduser,
+          user: iduser,
           name: projectName,
           cost: price,
           cat: parseInt(category),
@@ -66,15 +68,15 @@ function Page() {
         }
       ]);
 
+    if (insertError) {
+      console.error('Error inserting project:', insertError);
+      return;
+    }
 
-      console.log('Done')
+    console.log('Project inserted successfully:', insertData);
 
-    // if (insertError) {
-    //   console.error('Error inserting project:', insertError);
-    //   return;
-    // }
-
-    // console.log('Project inserted successfully:', insertData);
+    // Navigate to '/projects' after successful insertion
+    router.push('/projects');
 
     // Clear form
     setProjectName('');
