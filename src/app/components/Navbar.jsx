@@ -29,9 +29,9 @@ function  Navbar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-        <a href="#" className="navbar-brand p-0">
+        <Link href="/" className="navbar-brand p-0">
           <h1 className="m-0">Connect Hub</h1>
-        </a>
+        </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span className="fa fa-bars"></span>
         </button>
@@ -52,7 +52,7 @@ function  Navbar() {
          
           
           <SignedIn>
-          <UserButton className='p-2'></UserButton>
+          <UserButton  className='p-2 '></UserButton>
           </SignedIn>
 
           <SignedOut>
