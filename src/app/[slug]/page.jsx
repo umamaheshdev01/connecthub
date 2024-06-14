@@ -16,7 +16,7 @@ function Page({params}) {
         title  : 'Project' ,
         owner : 'Owner' ,
         cost : 1,
-        description : 'sollu',
+        description : 'Hi friends',
         mail : 'email',
         img : 'img/about.png'
     })

@@ -1,5 +1,4 @@
-'use client';
-
+'use client'
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Foot from '../components/Foot';
@@ -19,6 +18,7 @@ function Page() {
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleImageUpload = (e) => {
     setImage(e.target.files[0]);
@@ -75,10 +75,10 @@ function Page() {
 
     console.log('Project inserted successfully:', insertData);
 
-    // Navigate to '/projects' after successful insertion
-    router.push('/projects');
+    // Show success message
+    setSuccessMessage('Project added successfully!');
 
-    // Clear form
+    // Clear form inputs and image state
     setProjectName('');
     setPrice('');
     setCategory('');
@@ -118,7 +118,7 @@ function Page() {
             <div className="row justify-content-center">
               <div className="col-lg-7">
                 <div className="wow fadeInUp" data-wow-delay="0.3s">
-                  <p className="text-center mb-4">Innovation and Imaginations have no limits so dear friend add your projects here and make it public.</p>
+                  <p className="text-center mb-4 text-green-500">{successMessage}</p>
 
                   <form onSubmit={handleSubmit}>
                     <div className="row g-3">
@@ -195,7 +195,9 @@ function Page() {
                         </div>
                       </div>
                       <div className="col-12">
-                        <button className="btn btn-primary w-100 py-3" type="submit">Add Project</button>
+                        <button className="btn btn-primary w-100 py-3" type="submit">
+                          {successMessage ? <i className="bi bi-check-circle"></i> : 'Add Project'}
+                        </button>
                       </div>
                     </div>
                   </form>
