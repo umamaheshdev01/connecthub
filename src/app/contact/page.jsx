@@ -67,7 +67,7 @@ function Page() {
             <div className="row justify-content-center">
               <div className="col-lg-7">
                 <div className="wow fadeInUp" data-wow-delay="0.3s">
-                  <p className="text-center mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                  <p className="text-center mb-4">Please writes your queries here. Our team will respond as quick as possible.</p>
 
                   <form ref={form} onSubmit={handleSubmit}>
                     <div className="row g-3">
